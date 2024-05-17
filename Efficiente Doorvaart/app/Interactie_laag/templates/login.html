@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Ground | Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <main>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Login</h1>
+        </div>
+        <form action="home">
+            <div class="login-fields">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="123456@rotterdam.nl" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <br>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <p class="no-account"><a href="/register">Of maak een nieuw account aan.</a></p>
+    </div>
+</main>
+
+</body>
+</html>

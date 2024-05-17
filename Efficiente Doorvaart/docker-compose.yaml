@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  hetweerapi:
+    build:
+      context: ./app/Interactie_laag
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    networks:
+      - app_net
+
+  routes:
+    build:
+      context: ./app/Service_laag
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - hetweerapi
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge

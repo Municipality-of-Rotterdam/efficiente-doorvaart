@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Ground | API</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/apipage.css') }}">
+</head>
+<body>
+<header class="center">
+    <h1>Common Ground | API</h1>
+</header>
+<nav class="center">
+    <a href="/home">Home</a>
+    <a href="/hetweer">Het Weer</a>
+    <a href="/api">API</a>
+    <a href="/">Logout</a>
+</nav>
+
+<main class="center">
+    <p><h1>API</h1></p>
+
+    <div>
+        <form action="" method="post" id="apiForm">
+            <label for="action">Action:</label>
+            <select name="action" id="action" required>
+                <option value="" disabled selected>Kies een optie</option>
+                <option value="get">GET</option>
+                <option value="post">POST</option>
+                <option value="put">PUT</option>
+                <option value="patch">PATCH</option>
+                <option value="delete">DELETE</option>
+            </select><br>
+            <label for="target">Target:</label>
+            <select name="target" id="target" required>
+                <option value="" disabled selected>Kies een optie</option>
+                <option value="objects">Objects</option>
+                <option value="objecttypes">Objecttypes</option>
+            </select><br>
+    
+            <label for="authorization">Authorization Token:</label>
+            <input type="text" id="authorization" name="authorization" required><br>
+    
+            <label for="uuid">Uuid:</label>
+            <input type="text" id="uuid" name="uuid" required><br>
+            
+            <input type="submit" value="Submit Request"><br><br>
+    
+            <label for="usersinput">Your request:</label><br>
+            <textarea id="usersinput" name="usersinput" rows="2" cols="50" readonly>{{usersinput}}</textarea><br>
+            <label for="response">Response:</label><br>
+            <textarea id="response" name="response" rows="10" cols="50" readonly>{{response}}</textarea><br>
+            <input type="hidden" name="copy" id="copyField" value="true">
+            <button type="button" onclick="copyResponse()">Copy Response to Clipboard</button>
+        </form>
+    </div>
+    
+    <script>
+        function copyResponse() {
+          const responseText = document.getElementById('response').value;
+          navigator.clipboard.writeText(responseText)
+            .catch(err => {
+              console.error('Error copying response:', err);
+            });
+        }
+        </script>
+</main>
+
+</body>
+</html>

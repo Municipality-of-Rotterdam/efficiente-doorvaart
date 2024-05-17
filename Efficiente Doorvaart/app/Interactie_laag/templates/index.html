@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Ground | Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+<header class="center">
+    <h1>Common Ground | Home</h1>
+</header>
+
+<nav class="center">
+    <a href="/home">Home</a>
+    <a href="/hetweer">Het Weer</a>
+    <a href="/api">API</a>
+    <a href="/">Logout</a>
+</nav>
+
+<div class="center">
+  <h1>Vertrek</h1>
+  <p><strong>Huidige Tijd:</strong> {{ formatted_time }}</p>
+  <p><strong>Huidige Situatie:</strong> {{ current_situation }}</p>
+  
+<form method="post">
+    <label for="latitude"><strong>Voer jouw latitude in:</strong></label>
+    <input type="text" id="latitude" name="latitude" required>
+    <br>
+    <label for="longitude"><strong>Voer jouw longitude in:</strong></label>
+    <input type="text" id="longitude" name="longitude" required>
+    <br>
+    <label for="speed"><strong>Voer jouw snelheid in:</strong></label>
+    <input type="text" id="speed" name="speed" required>
+    <select name="speed_unit">
+        <option value="knots">knopen</option>
+        <option value="kilometer">kilometer</option>
+    </select>
+    <br>
+    <button type="submit"><strong>Berekenen</strong></button>
+</form>
+<a href="https://www.latlong.net/" target="_blank">Weet je je coördinaten niet? Klik hier.</a>
+{% if distance is not none %}
+    <p>De afstand tussen jouw locatie <strong>({{ request.form['latitude']}}, {{ request.form['longitude']}})</strong> en de <strong>Erasmusbrug (51.9090° N, 4.4871° E)</strong> is {{ distance|round(2) }} km.</p>
+    <p>Reistijd: {{ travel_time }}</p>
+    <p>Aankomst: {{ arrival_time }}</p>
+    <p>Advies: {{ advice }}</p>
+{% endif %}
+
+</div>
+<br><br>
+<div>
+    <h3 class="center">Geschiedenis</h3>
+    <table class="geschiedenis-table">
+        <thead>
+            <tr>
+                <th>Tijdstip</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Snelheid</th>
+                <th>Knopen?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for geschiedenis in geschiedenis %}
+                <tr>
+                    <td>{{ geschiedenis[1] }}</td>
+                    <td>{{ geschiedenis[2] }}</td>
+                    <td>{{ geschiedenis[3] }}</td>
+                    <td>{{ geschiedenis[4] }}</td>
+                    <td>{{ geschiedenis[5] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

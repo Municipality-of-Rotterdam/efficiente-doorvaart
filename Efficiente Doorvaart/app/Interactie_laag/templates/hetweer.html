@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Ground | Het Weer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hetweer.css') }}">
+</head>
+<body>
+<header class="center">
+    <h1>Common Ground | Het Weer</h1>
+</header>
+<nav class="center">
+    <a href="/home">Home</a>
+    <a href="/hetweer">Het Weer</a>
+    <a href="/api">API</a>
+    <a href="/">Logout</a>
+</nav>
+
+<div class="center">
+    <h1>Het Weer</h1>
+        <p>Stad: {{ weather_data['name'] }}</p>
+        <p>Laatst geupdated: {{ utcfromtimestamp(weather_data['dt']).strftime('%Y-%m-%d om %H:%M:%S') }}</p>
+        <p>Temperatuur: {{ weather_data['main']['temp'] }}°C</p>
+        <p>Windrichting: {{ weather_data['wind']['deg'] }}°</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "$id": "https://api.vng.nl/objecttypes/boom/schema.json",
+  "type": "object",
+  "title": "Boom",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "required": [
+    "boomhoogteactueel",
+    "leeftijd"
+  ],
+  "properties": {
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "Type",
+      "description": "Typering van het beheerobject."
+    },
+    "leeftijd": {
+      "$id": "#/properties/leeftijd",
+      "type": "integer",
+      "title": "Leeftijd",
+      "examples": [],
+      "description": "Leeftijd van het beheerobject in jaren.\nEenheid: Aantal"
+    },
+    "boomgroep": {
+      "$id": "#/properties/boomgroep",
+      "enum": [
+        "Laanboom",
+        "Boomweide",
+        "Solitaire boom"
+      ],
+      "type": "string",
+      "title": "Boomgroep",
+      "examples": [
+        "Laanboom"
+      ],
+      "description": "Aanduiding of de boom onderdeel is van een boomgroep."
+    },
+    "meerstammig": {
+      "$id": "#/properties/meerstammig",
+      "type": "boolean",
+      "title": "Meerstammig",
+      "description": "Aanduiding voor meerstammigheid bij een Boom"
+    },
+    "boomhoogteactueel": {
+      "$id": "#/properties/boomhoogteactueel",
+      "type": "integer",
+      "title": "BoomhoogteActueel",
+      "description": "Hoogte van de boom in meters.\nEenheid: m"
+    }
+  },
+  "description": "Een houtachtig gewas (loofboom of conifeer) met een wortelgestel en een enkele, stevige, houtige stam, die zich boven de grond vertakt."
+}
